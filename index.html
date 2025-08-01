@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javeria | SEO & Social Media Expert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --dusty-rose: #d4a5a5;
+            --muted-lavender: #c8b6ff;
+            --soft-teal: #99d6ea;
+            --pale-gold: #f5e3c8;
+            --deep-mauve: #a67f8e;
+            --dark-charcoal: #2d2d2d;
+            --light-cream: #fff9f0;
+            --soft-coral: #ffa5a5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff9f0, #f5e3c8);
+            color: var(--dark-charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 0.8rem 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.4s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--deep-mauve);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--deep-mauve);
+            transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--dark-charcoal);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            color: var(--dark-charcoal);
+            opacity: 0.85;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 30px rgba(166, 127, 142, 0.3);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(45deg, var(--muted-lavender), var(--soft-teal));
+            transition: width 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(166, 127, 142, 0.4);
+        }
+
+        .hero-visual {
+            flex: 1;
+            perspective: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .floating-container {
+            width: 380px;
+            height: 380px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .profile-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: url('profile.jpg') center/cover;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            transform: translateZ(20px);
+            border: 8px solid white;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            transform-style: preserve-3d;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .element-1 {
+            width: 140px;
+            height: 140px;
+            top: -40px;
+            right: -40px;
+            animation: float-secondary 6s ease-in-out infinite;
+            transform: translateZ(40px);
+        }
+
+        .element-2 {
+            width: 120px;
+            height: 120px;
+            bottom: 30px;
+            left: -50px;
+            animation: float-secondary 7s ease-in-out infinite;
+            transform: translateZ(30px);
+        }
+
+        .element-3 {
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: -30px;
+            animation: float-secondary 5s ease-in-out infinite;
+            transform: translateZ(50px);
+        }
+
+        .floating-element i {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Sections */
+        section {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            margin-bottom: 5rem;
+            position: relative;
+            color: var(--deep-mauve);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Profile Section */
+        .profile-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .profile-info {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 3rem;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+            transform: translateY(0);
+            transition: transform 0.5s ease;
+        }
+
+        .profile-info:hover {
+            transform: translateY(-10px);
+        }
+
+        .profile-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--deep-mauve);
+        }
+
+        .profile-info p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: var(--dark-charcoal);
+        }
+
+        .languages {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .language-tag {
+            background: rgba(200, 182, 255, 0.2);
+            color: var(--deep-mauve);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            border: 1px solid rgba(166, 127, 142, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Education & Skills */
+        .education-skills {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.05);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .education, .skills {
+            padding: 2rem;
+        }
+
+        .education h3, .skills h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--deep-mauve);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .education h3::after, .skills h3::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+            bottom: 0;
+            left: 0;
+        }
+
+        .edu-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(166, 127, 142, 0.2);
+        }
+
+        .edu-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .edu-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-charcoal);
+        }
+
+        .edu-item p {
+            color: var(--dark-charcoal);
+            opacity: 0.8;
+        }
+
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-category h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-charcoal);
+        }
+
+        .skill-bar {
+            height: 12px;
+            background: rgba(166, 127, 142, 0.1);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+            border-radius: 10px;
+            position: relative;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shine 2s infinite;
+        }
+
+        /* Experience */
+        .experience-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .exp-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 25px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            transform: translateY(0) rotate(0);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .exp-card:hover {
+            transform: translateY(-15px) rotate(1deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+        }
+
+        .exp-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--deep-mauve);
+        }
+
+        .exp-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-charcoal);
+            opacity: 0.8;
+        }
+
+        .exp-card ul {
+            padding-left: 1.5rem;
+        }
+
+        .exp-card ul li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .exp-card ul li::before {
+            content: '▹';
+            color: var(--muted-lavender);
+            position: absolute;
+            left: -1.5rem;
+        }
+
+        /* Social Media Manager Section */
+        .social-media {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.05);
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .client-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .client-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .client-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+            color: white;
+        }
+
+        .client-name {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--deep-mauve);
+        }
+
+        .client-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: rgba(166, 127, 142, 0.1);
+            color: var(--deep-mauve);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .client-link:hover {
+            background: var(--deep-mauve);
+            color: white;
+        }
+
+        /* Contact */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 30px;
+            padding: 4rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+        }
+
+        .contact-item {
+            margin-bottom: 1.8rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item i {
+            margin-right: 15px;
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: white;
+            color: var(--deep-mauve);
+            border-radius: 50%;
+            font-size: 1.8rem;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 5px 15px rgba(166, 127, 142, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+            transition: height 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: 1;
+        }
+
+        .social-links a i {
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-links a:hover::before {
+            height: 100%;
+        }
+
+        .social-links a:hover i {
+            color: white;
+            background: transparent;
+            -webkit-background-clip: initial;
+            background-clip: initial;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(45deg, var(--deep-mauve), var(--muted-lavender));
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(3deg);
+            }
+        }
+
+        @keyframes float-secondary {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-20px) translateX(10px);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                margin-top: 5rem;
+            }
+            
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .education-skills, .social-media {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .floating-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .element-1, .element-2, .element-3 {
+                transform: scale(0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Javeria</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="#social-media">Social Media</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Javeria </h1>
+                <h2>SEO Expert & Social Media Manager</h2>
+                <p>Creative and detail-focused professional with a passion for building strong online presence through engaging content and smart strategy.</p>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-container">
+                    <div class="profile-circle"></div>
+                    <div class="floating-element element-1">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="floating-element element-2">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <div class="floating-element element-3">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile">
+        <h2 class="section-title">Professional Profile</h2>
+        <div class="profile-content">
+            <div class="profile-info">
+                <h3>About Me</h3>
+                <p>I'm a creative and detail-focused WordPress developer and content writer with a passion for building user-friendly websites and writing engaging, SEO-friendly content. I blend design sense with storytelling to create digital experiences that stand out.</p>
+                <p>With expertise in SEO strategies and content management, I help businesses establish a strong online presence and achieve their digital marketing goals. My approach combines technical skills with creative thinking to deliver results-driven solutions.</p>
+                <p>Always eager to learn and deliver quality work on time, I bring dedication and professionalism to every project I undertake.</p>
+                
+                <div class="languages">
+                    <div class="language-tag">English (Fluent)</div>
+                    <div class="language-tag">Urdu (Fluent)</div>
+                    <div class="language-tag">Pushto (Fluent)</div>
+                </div>
+            </div>
+            <div class="profile-info">
+                <h3>My Philosophy</h3>
+                <p>I believe that great digital experiences come from the perfect blend of technical excellence and creative storytelling. Every website should not only rank well but also connect with its audience on an emotional level.</p>
+                <p>My approach to SEO goes beyond keywords - it's about understanding user intent, creating valuable content, and building sustainable strategies that deliver long-term results.</p>
+                <p>In content creation, I focus on crafting narratives that resonate, inform, and inspire action. The best content doesn't just attract visitors - it converts them into loyal customers.</p>
+                
+                <a href="#social-media" class="btn" style="margin-top: 20px;">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Skills -->
+    <section id="education">
+        <h2 class="section-title">Education & Skills</h2>
+        <div class="education-skills">
+            <div class="education">
+                <h3>Education</h3>
+                <div class="edu-item">
+                    <h4>Bachelor of Science in Statistics</h4>
+                    <p>Islamia College Peshawar</p>
+                    <p>2020 – 2024 | GPA: 2.9/4.00</p>
+                </div>
+                <div class="edu-item">
+                    <h4>FSC in Computer Science</h4>
+                    <p>Govt. Girls Degree College</p>
+                    <p>2018 – 2019</p>
+                </div>
+            </div>
+            <div class="skills">
+                <h3>Skills</h3>
+                <div class="skill-category">
+                    <h4>Professional Skills</h4>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 92%"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 88%"></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Technical Expertise</h4>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 98%"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 96%"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 97%"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Manager Section -->
+    <section id="social-media">
+        <h2 class="section-title">Social Media Management</h2>
+        <div class="social-media">
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                I've successfully managed social media presence for diverse clients, creating engaging content and implementing strategies that drive growth and engagement. Below are some of the platforms I've managed:
+            </p>
+            <div class="clients-grid">
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="client-name">Rikhtiya</div>
+                    <a href="https://rikhtiya.com/" class="client-link" target="_blank">Visit Website</a>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="client-name">IT Radiation</div>
+                    <a href="https://itradiation.com/" class="client-link" target="_blank">Visit Website</a>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <div class="client-name">TikTok</div>
+                    <a href="https://tiktok.com/@rikhtiya" class="client-link" target="_blank">Visit Profile</a>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="client-name">YouTube</div>
+                    <a href="https://www.youtube.com/@rikhtiya" class="client-link" target="_blank">Visit Channel</a>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <div class="client-name">Facebook</div>
+                    <a href="https://facebook.com/rikhtiya" class="client-link" target="_blank">Visit Page</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="experience-container">
+            <div class="exp-card">
+                <h3>Social Media & Content Manager</h3>
+                <h4>IT Radiation</h4>
+                <ul>
+                    <li>Planning posts and writing captions</li>
+                    <li>Running campaigns and tracking performance</li>
+                    <li>Focus on growth and quality content creation</li>
+                    <li>Turning ideas into content that connects and inspires</li>
+                </ul>
+            </div>
+            <div class="exp-card">
+                <h3>SEO Expert & Blogger</h3>
+                <h4>RIKHTIVA</h4>
+                <ul>
+                    <li>Keyword research and content planning</li>
+                    <li>Writing articles that engage readers</li>
+                    <li>Optimizing content for Google performance</li>
+                    <li>Improving search rankings and traffic</li>
+                </ul>
+            </div>
+            <div class="exp-card">
+                <h3>Accounts Manager</h3>
+                <h4>Hygiene Mission Cleaning Services [HMCS]</h4>
+                <ul>
+                    <li>Managed invoices and tracked expenses</li>
+                    <li>Ensured smooth billing operations</li>
+                    <li>Maintained accurate account reports</li>
+                    <li>Coordinated with clients for payments</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i> +92 314-9126475
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i> javerianoor@gmail.com
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i> Peshawar city, KPK, Pakistan
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-user"></i> Reference: Asif Afridi (CEO IT Radiation) | Phone: 0913097881
+            </div>
+            <div class="social-links">
+                <a href="https://wa.me/+923149126475" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/javeria-ba01a62ba?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/they._.call._.me._.jerry_?igsh=Nnh4bzJuY3dqZHFv" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Javeria . All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Particles.js initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS("particles-js", {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#a67f8e" },
+                    shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+                    opacity: { value: 0.3, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+                    size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1, sync: false } },
+                    line_linked: { enable: true, distance: 150, color: "#c8b6ff", opacity: 0.2, width: 1 },
+                    move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true }
+                },
+                retina_detect: true
+            });
+            
+            // GSAP animations
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Animate elements on scroll
+            gsap.utils.toArray('.profile-info, .edu-item, .exp-card, .contact-container, .client-card').forEach(element => {
+                gsap.from(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 90%",
+                        end: "bottom 60%",
+                        toggleActions: "play none none none"
+                    },
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+            
+            // Animate skill bars
+            gsap.utils.toArray('.skill-progress').forEach(bar => {
+                ScrollTrigger.create({
+                    trigger: bar,
+                    start: "top 90%",
+                    onEnter: () => {
+                        gsap.to(bar, {
+                            width: bar.style.width,
+                            duration: 1.5,
+                            ease: "power3.out"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
